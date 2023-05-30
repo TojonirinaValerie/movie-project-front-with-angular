@@ -1,0 +1,72 @@
+<div class="section-inner1">
+    <div class="info-header">
+        <div class="modal-header">
+            <div class="modal-title modal-title-film" [ngClass]="this.isInfo$.value ? 'modal-title-active' : ''" (click)="toogleIsInfo(true)">
+                <div> Informations </div>
+                <hr class="title-underline" [ngClass]="this.isInfo$.value ? 'title-underline-active' : ''">
+            </div>
+            <div class="modal-title modal-title-serie" [ngClass]="!this.isInfo$.value ? 'modal-title-active' : ''" (click)="toogleIsInfo(false)">
+                <div> Regarder </div>
+                <hr class="title-underline" [ngClass]="!this.isInfo$.value ? 'title-underline-active' : ''">
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="this.isInfo$.value">
+
+        <div *ngIf="!this.moviesService.isDataLoaded$.value" class="display-center">
+            <app-spinner></app-spinner>
+        </div>
+
+        <div *ngIf="this.moviesService.isDataLoaded$.value" class="detail-content">
+
+            <div class="left">
+                <img src="{{ this.srcImage }}" alt="{{ this.movie.title }}">
+            </div>
+            <div class="right">
+                <div>
+                    <span class="info-title"> Titre :</span>
+                    <span class="info-value"> {{ this.movie.title }} </span>
+                </div>
+                <div>
+                    <span class="info-title"> Genre :</span>
+                    <span class="info-value"> <span *ngFor="this.movie.listGenre as genre"> {{ genre }} </span> </span>
+                </div>
+                <div>
+                    <span class="info-title"> Durée :</span>
+                    <span class="info-value"> {{ this.helperService.playtimeStringToString(this.movie.playtimeString) }} </span>
+                </div>
+                <div>
+                    <span class="info-title"> Taille :</span>
+                    <span class="info-value"> {{ this.helperService.sizeOctetToString(this.movie.fileSize) }} </span>
+                </div>
+                <div>
+                    <span class="info-title"> Format :</span>
+                    <span class="info-value"> {{ this.movie.formatFile }} </span>
+                </div>
+                <div *ngIf="this.isSinopsysExist$.value">
+                    <span class="info-title"> Sinopsys :</span>
+                    <span class="info-value"> {{ this.movie.sinopsys }} </span>
+                </div>
+                <div class="film-card-download-content">
+                    <a href="{{ this.srcVideo }}" download class="btn btn-download">  Telecharger </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="!this.isInfo$.value">
+        <div class="video-content">
+            <div class="video-title">
+                {{ this.movie.title }}
+            </div>
+            <video controls class="video" *ngIf="!this.isInfo$.value">
+                <source [src]="this.srcVideo"/>
+            </video>
+            <div class="">
+                <button id="copy-btn" class="btn" (click)="onCopyText('copy-btn')"> Copier le lien du video </button>
+            </div>
+        </div>
+    </div>
+</div>

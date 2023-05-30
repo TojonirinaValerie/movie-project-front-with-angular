@@ -1,0 +1,20 @@
+<div class="header-inner">
+    <div class="nav-bar">
+        
+        <div class="nav-bar-left"> 
+            <span class="nav-bar-title"> My Movies </span>
+            <div class="nav-bar-search">
+                <form [formGroup]="this.formSearch">
+                    <input type="text" formControlName="title" (keyup)="onSearch()" class="search-input" placeholder="Recherche">
+                    <button type="submit" class="btn-search"> <i class="fa-solid fa-search"></i> </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="nav-bar-action">
+            <i class="fa-solid fa-plus" id="add-movie" (click)="onPlusClick()"> </i>
+            <i class="fa-solid fa-list btn"></i> 
+        </div>
+
+    </div>
+</div>

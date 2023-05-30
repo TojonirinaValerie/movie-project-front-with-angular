@@ -1,0 +1,21 @@
+<div class="section-inner">
+    <div class="section-title">
+        Liste film : {{ this.paginationService.paginationModel$.value.totalResult }}
+    </div>
+
+    <div *ngIf="!this.paginationService.isDataLoaded$.value" class="display-center">
+        <app-spinner></app-spinner>
+    </div>
+
+    <div *ngIf="this.paginationService.isDataLoaded$.value" class="section-card-content">
+        <app-film-card *ngFor="let obj of listMovie"
+            [movie]="obj"
+            >
+        </app-film-card>
+    </div>
+
+    <app-pagination  *ngIf="this.paginationService.isDataLoaded$.value" class="pagination"
+    [listParPage]="this.listParPage"
+    (changePage)="pageChange($event)"
+    ></app-pagination>
+</div>

@@ -1,0 +1,48 @@
+<div class="pagination-inner">
+
+    <div>
+
+        <div class="pagination-info">
+            <span> Page </span>
+            <span> {{ this.pageModel.page }} sur {{ this.pageModel.totalPage }} </span>
+        </div>
+
+        <div class="list-page">
+
+            <div *ngIf="!isDisablePrevious()"
+                class="btn-previous"
+                (click)="setPage(this.pageModel.page-1, this.pageModel.limit)">
+                    <i class="fas fa-angle-left"></i>
+            </div>
+
+            <div class="btn-list-page" *ngFor="let index of indexPage">
+                <span class="btn-page-index"
+                        [ngClass]="this.pageModel.page==index ? 'page-active' : ''"
+                        (click)="setPage(index, this.pageModel.limit)">
+                        {{ index }}
+                </span>
+            </div>
+
+            <div *ngIf="!isDisableNext()"
+                class="btn-next"
+                (click)="setPage(this.pageModel.page+1, this.pageModel.limit)">
+                <i class="fas fa-angle-right"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="pagination-list-select">
+        <span> Liste par page :  </span>
+        <select class="list-par-page" (change)="change($event)">
+            <option *ngFor="let parPage of listParPage"
+                class="option"
+                [selected]="this.isSelected(parPage)"
+                [value]="parPage">
+                {{ parPage }}
+            </option>
+        </select>
+    </div>
+
+</div>

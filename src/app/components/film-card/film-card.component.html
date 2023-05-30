@@ -1,0 +1,23 @@
+<div class="film-card" (click)="onCardClick()">
+    <div class="film-image">
+        <img src="{{ this.srcImage }}" alt="Image non trouvée">
+    </div>
+    <div class="card-description-content">
+        <div class="film-title">
+            {{ this.movie.title }}
+        </div>
+        <div class="film-card-bottom">
+            <div class="film-card-left">
+                <span class="fcb-title"> Taille </span>
+                <span class="fcb-value"> {{ this.size }} </span>
+            </div>
+            <div class="film-card-right">
+                <span class="fcb-title"> DUREE </span>
+                <span class="fcb-value"> {{ this.durre }} </span>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="film-card-download-content"> 
+        <a href="{{ this.srcVideo }}" download class="btn btn-download">  Telecharger </a>
+    </div> -->
+</div>

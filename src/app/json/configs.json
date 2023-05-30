@@ -1,0 +1,21 @@
+{
+    "baseUrl": "http://192.168.43.67",
+    "backUrl": "/movie_project/back-codeigniter/",
+    "movieFolder": ":12346/Films/",
+
+    "numPC":{
+      "PC1":"http://192.168.43.67",
+      "PC2":"http://192.168.43.22"
+    },
+    "numDisc":{
+      "disc1": "12345",
+      "disc2":"12346"
+    },
+    "folderName":{
+      "PC1_Disc1":"",
+      "PC1_Disc2":"Films/",
+      "PC2_Disc1":"Films/",
+      "PC2_Disc2":"Films/"
+    }
+
+}
